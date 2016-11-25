@@ -1,0 +1,17 @@
+DirectoryIndex index.html index.php
+Options -Indexes
+RewriteEngine On
+RewriteCond $1 !^(index\.php|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php/$1 [L,QSA]
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+#AuthType Basic
+#AuthName "PSIC"
+#AuthUserFile "/home/jumpto/.htpasswds/public_html/projects/cs2013/passwd"
+#require valid-user
